@@ -1,0 +1,85 @@
+<div style="text-align: center; margin: 50px 0 0 0;">
+    <h1>
+        Registrar un recurso humano
+    </h1>
+</div>
+<div class="container d-flex justify-content-center">
+    <img src="{{ sourceIconUser }}" alt="" style="width: 150px; height: 150px; margin: 50px 0;">
+</div>
+<form [formGroup]="dataEmployee" (ngSubmit)="postEmployee(dataEmployee.value)">
+    <div class="card">
+        <div class="card-header">
+            Información del recurso humano
+        </div>
+        <div class="card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <label for="rh_name" class="form-label"> <span style="color: red;">*</span> Nombre(s)</label>
+                        <input type="text" class="form-control" [ngClass]="{'badData': this.dataEmployee.get('name')?.errors && !this.allDataOk}" id="rh_name" formControlName="name">
+                    </div>
+                    <div class="col">
+                        <label for="rh_firstSurname" class="form-label"> <span style="color: red;">*</span> Primer apellido</label>
+                        <input type="text" class="form-control" [ngClass]="{'badData': this.dataEmployee.get('firstSurname')?.errors && !this.allDataOk}" id="rh_firstSurname" formControlName="firstSurname">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="rh_curp" class="form-label"> <span style="color: red;">*</span> CURP</label>
+                        <input type="text" class="form-control" [ngClass]="{'badData': this.dataEmployee.get('curp')?.errors && !this.allDataOk}" id="rh_curp" formControlName="curp">
+                        <span *ngIf="this.dataEmployee.get('curp')?.errors?.['pattern'] && !this.allDataOk" style="color: red; margin-left: 10px;">
+                            Ingrese una CURP válida
+                        </span>
+                    </div>
+                    <div class="col">
+                        <label for="rh_secondSurname" class="form-label"> <span style="color: red;">*</span> Segundo apellido</label>
+                        <input type="text" class="form-control" [ngClass]="{'badData': this.dataEmployee.get('secondSurname')?.errors && !this.allDataOk}" id="rh_secondSurname" formControlName="secondSurname">                      
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <label for="rh_departamento" class="form-label"> <span style="color: red;">*</span> Departamento</label>
+                        <select class="form-select" [ngClass]="{'badData': this.dataEmployee.get('departamento_id')?.errors && !this.allDataOk}" id="rh_departamento" formControlName="departamento_id">
+                            <option *ngFor="let dep of departamentos" value="{{ +dep.id }}">{{ dep.name }}</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="rh_puesto" class="form-label"> <span style="color: red;">*</span> Puesto</label>
+                        <select class="form-select" [ngClass]="{'badData': this.dataEmployee.get('puesto_id')?.errors && !this.allDataOk}" id="rh_puesto" formControlName="puesto_id">
+                            <option *ngFor="let puesto of puestos" value="{{ +puesto.id }}">{{ puesto.name }}</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-8">
+                        <label class="form-label" for="rh_estado" style="padding-right: 20px;"> <span style="color: red;">*</span> Estado: </label>
+                        <div class="form-check form-check-inline " [ngClass]="{'badDataLabel': this.dataEmployee.get('estado_id')?.errors && !this.allDataOk}" *ngFor="let estado of estados" >
+                            <input class="form-check-input" type="radio" name="estado_id" id="rh_estado_activo"
+                             value="{{ +estado.id }}" formControlName="estado_id">
+                            <label class="form-check-label" for="estado_id">{{ estado.name }}</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <span *ngIf="!this.dataEmployee.valid && !this.allDataOk" style="color: red; margin-left: 15px;">
+                Rellene todos los campos
+            </span>
+        </div>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+        <div class="row ">
+            <div class="col-6">
+                <button class="btn btn-primary">Aceptar</button>
+            </div>
+            <div class="col-6">
+                <button class="btn btn-danger" routerLink="/">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</form>
+<br>

@@ -1,0 +1,79 @@
+<div style="text-align: center; margin: 50px 0 0 0;">
+    <h1>
+        Consultar recurso humano
+    </h1>
+</div>
+<div class="container d-flex justify-content-center">
+    <img src="{{ sourceIconUser }}" alt="" style="width: 150px; height: 150px; margin: 50px 0;">
+</div>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                Información del recurso humano
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <span>
+                                <p style="display: inline; font-weight: bold; margin-right: 10px;">Nombre(s): </p> {{
+                                employeData?.name }}
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span>
+                                <p style="display: inline; font-weight: bold; margin-right: 10px;">Primer apellido: </p>
+                                {{ employeData?.firstSurname }}
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <span>
+                                <p style="display: inline; font-weight: bold; margin-right: 10px;">CURP: </p> {{
+                                employeData?.curp }}
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span>
+                                <p style="display: inline; font-weight: bold; margin-right: 10px;">Segundo apellido:
+                                </p> {{ employeData?.secondSurname }}
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <span>
+                                <p style="display: inline; font-weight: bold; margin-right: 10px;">Departamento: </p> {{
+                                employeData?.departamento_id?.name }}
+                            </span>
+                        </div>
+                        <div class="col">
+                            <span>
+                                <p style="display: inline; font-weight: bold; margin-right: 10px;">Puesto: </p> {{
+                                employeData?.puesto_id?.name }}
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-8">
+                            <span>
+                                <p style="display: inline; font-weight: bold; margin-right: 10px;">Estado: </p> {{
+                                employeData?.estado_id?.name }}
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="d-flex justify-content-center">
+            <button class="btn btn-success" routerLink="/">Regresar</button>
+        </div>
+    </div>
+</div>

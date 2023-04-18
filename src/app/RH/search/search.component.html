@@ -1,0 +1,70 @@
+<div style="text-align: center; margin: 50px 0 0 0;">
+    <h1>
+        Listar recursos humanos
+    </h1>
+</div>
+<div class="card">
+    <div class="card-header">
+        Busqueda de recursos humanos
+    </div>
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <label for="rh_name" class="form-label">Nombre</label>
+                    <input type="email" class="form-control" id="rh_name" [(ngModel)]="search_name">
+                </div>
+                <div class="col">
+                    <label for="rh_firsSurname" class="form-label">Primer apellido</label>
+                    <input type="email" class="form-control" id="rh_firsSurname" [(ngModel)]="search_fSurname">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label for="rh_secondSurname" class="form-label">Segundo apellido</label>
+                    <input type="email" class="form-control" id="rh_secondSurname" [(ngModel)]="search_sSurname">
+                </div>
+                <div class="col">
+                    <label for="rh_curp" class="form-label">CURP</label>
+                    <input type="email" class="form-control" id="rh_curp" [(ngModel)]="search_CURP">
+                </div>
+                
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label for="rh_departamento" class="form-label">Departamento</label>
+                    <select class="form-select" id="rh_departamento" [(ngModel)]="search_Departamento">
+                        <option *ngFor="let dep of departamentos" value="{{ dep.name }}">{{ dep.name }}</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="rh_puesto" class="form-label">Puesto</label>
+                    <select class="form-select" id="rh_puesto" [(ngModel)]="search_Puesto">
+                        <option *ngFor="let puesto of puestos" value="{{ puesto.name }}">{{ puesto.name }}</option>
+                    </select> 
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <label for="rh_estado" class="form-label">Estado</label>
+                    <select class="form-select" id="rh_estado" [(ngModel)]="search_Estado">
+                        <option *ngFor="let estado of estados" value="{{ estado.name }}">{{ estado.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<app-listar 
+    [search_name]="search_name"
+    [search_fSurname]="search_fSurname"
+    [search_sSurname]="search_sSurname"
+    [search_CURP]="search_CURP"
+    [search_Departamento]="search_Departamento"
+    [search_Puesto]="search_Puesto"
+    [search_Estado]="search_Estado"
+></app-listar>

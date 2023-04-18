@@ -1,0 +1,62 @@
+<br>
+<div class="container d-flex justify-content-end">
+    <a class="icono text-center" routerLink="/add">
+        <span class="material-symbols-outlined">
+            person_add
+        </span>
+        Registrar
+    </a>
+</div>
+<br>
+<div>
+    <table class="table table-hover table-bordered">
+        <thead>
+            <th scope="col">Nombre</th>
+            <th scope="col">Primer apellido</th>
+            <th scope="col">Segundo apellido</th>
+            <th scope="col">CURP</th>
+            <th scope="col">Puesto</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Departamento</th>
+            <th scope="col">Acciones</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let empleado of empleados | filterRh:[search_name, search_fSurname, search_sSurname, search_CURP, search_Departamento, search_Puesto, search_Estado]">
+                <td>{{ empleado.name }}</td>
+                <td>{{ empleado.firstSurname }}</td>
+                <td>{{ empleado.secondSurname }}</td>
+                <td>{{ empleado.curp }}</td>
+                <td class="text-center" >{{ empleado.puesto_id.name }}</td>
+                <td class="text-center" >{{ empleado.estado_id.name }}</td>
+                <td class="text-center" >{{ empleado.departamento_id.name }}</td>
+                <td>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <a class="icon-link" routerLink="/edit/{{ empleado.id }}">
+                                    <span class="material-symbols-outlined">
+                                        edit_square
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="icon-link" routerLink="/" (click)="deleteEmployee(empleado)">
+                                    <span class="material-symbols-outlined">
+                                        delete_forever
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a class="icon-link" routerLink="/details/{{ empleado.id }}">
+                                    <span class="material-symbols-outlined">
+                                        wysiwyg
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
